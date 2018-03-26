@@ -5,9 +5,9 @@ Created By Vikash Harjeewan
 Date  : 3/1/2018
 I added daily schedules for scrape updated data regular
 */
-require	'simple_html_dom.php';
-//require 'scraperwiki.php';
-//require 'scraperwiki/simple_html_dom.php';
+require 'scraperwiki.php';
+require 'scraperwiki/simple_html_dom.php';
+
 //totalpages is for future if you saw there is more than 36 pages just change number in totalpages=	;
 //http://federalshariatcourt.gov.pk/11.html
 
