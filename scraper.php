@@ -26,7 +26,6 @@ for($page = 1;$page <= $totalpages; $page++)
 			$appeal 	=	$element->find("td[2]",0)->plaintext;
 			$convic 	=	$element->find("td[3]",0)->plaintext;
 			$decision 	=	$element->find("td[4]",0)->plaintext;
-			echo $s_no.'<br>';
 			scraperwiki::save_sqlite(array('s_no'), array('s_no'=> $s_no,'appeal'=> $appeal,'convic'=> $convic,'decision'=> $decision,'link'=> $link));
 			
 		 } 
