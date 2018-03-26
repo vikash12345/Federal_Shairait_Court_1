@@ -1,27 +1,36 @@
-<?
-// This is a template for a PHP scraper on morph.io (https://morph.io)
-// including some code snippets below that you should find helpful
+<?php
+/*This scraper for Federal Sharait Court of Criminal Cases.
+Link :  http://federalshariatcourt.gov.pk/c1.html
+Created By Vikash Harjeewan
+Date  : 3/1/2018
+I added daily schedules for scrape updated data regular
+*/
+require	'simple_html_dom.php';
+//require 'scraperwiki.php';
+//require 'scraperwiki/simple_html_dom.php';
+//totalpages is for future if you saw there is more than 36 pages just change number in totalpages=	;
+//http://federalshariatcourt.gov.pk/11.html
 
-// require 'scraperwiki.php';
-// require 'scraperwiki/simple_html_dom.php';
-//
-// // Read in a page
-// $html = scraperwiki::scrape("http://foo.com");
-//
-// // Find something on the page using css selectors
-// $dom = new simple_html_dom();
-// $dom->load($html);
-// print_r($dom->find("table.list"));
-//
-// // Write out to the sqlite database using scraperwiki library
-// scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
-//
-// // An arbitrary query against the database
-// scraperwiki::select("* from data where 'name'='peter'")
+$totalpages   = 1;
 
-// You don't have to do things with the ScraperWiki library.
-// You can use whatever libraries you want: https://morph.io/documentation/php
-// All that matters is that your final data is written to an SQLite database
-// called "data.sqlite" in the current working directory which has at least a table
-// called "data".
+for($page = 1;$page <= $totalpages; $page++)
+	{
+		$link	=	'http://federalshariatcourt.gov.pk/'.$page.'.html';
+		$html	=	file_get_html($link);
+		foreach($html->find("/html/body/table/tbody/tr[3]/td/table[1]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/table/tbody/tr") as $element)
+		{
+		$no 	=	$element->find("td[1]",0)->plaintext;
+		 if (is_numeric($no) == true) 
+		 { 
+			$s_no 		=	$element->find("td[1]",0)->plaintext;
+			$appeal 	=	$element->find("td[2]",0)->plaintext;
+			$convic 	=	$element->find("td[3]",0)->plaintext;
+			$decision 	=	$element->find("td[4]",0)->plaintext;
+			echo $s_no.'<br>';
+			scraperwiki::save_sqlite(array('s_no'), array('s_no'=> $s_no,'appeal'=> $appeal,'convic'=> $convic,'decision'=> $decision,'link'=> $link));
+			
+		 } 
+		}
+	
+	}
 ?>
