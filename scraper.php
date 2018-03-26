@@ -1,6 +1,6 @@
 <?php
 /*This scraper for Federal Sharait Court of Criminal Cases.
-Link :  http://federalshariatcourt.gov.pk/c1.html
+Link :  http://federalshariatcourt.gov.pk/1.html
 Created By Vikash Harjeewan
 Date  : 3/1/2018
 I added daily schedules for scrape updated data regular
