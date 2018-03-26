@@ -11,7 +11,7 @@ require 'scraperwiki/simple_html_dom.php';
 //totalpages is for future if you saw there is more than 36 pages just change number in totalpages=	;
 //http://federalshariatcourt.gov.pk/11.html
 
-$totalpages   = 1;
+$totalpages   = 12;
 
 for($page = 1;$page <= $totalpages; $page++)
 	{
